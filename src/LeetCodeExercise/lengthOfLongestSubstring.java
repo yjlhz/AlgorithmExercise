@@ -8,7 +8,7 @@ import java.util.Queue;
 public class lengthOfLongestSubstring {
     public static void main(String[] args){
         lengthOfLongestSubstring s = new lengthOfLongestSubstring();
-        System.out.println(s.lengthOfLongestSubstringText03("pwwkew"));
+        System.out.println(s.lengthOfLongestSubstringText03("sada f"));
 
     }
     public int lengthOfLongestSubstringText01(String s){
@@ -44,11 +44,12 @@ public class lengthOfLongestSubstring {
         if(s.length() == 0) return 0;
         int len = 0;
         int[] arrays = new int[128];
-        for (int i = 0;i < arrays.length; i++){
+        for (int i = 0; i < arrays.length; i++){
             arrays[i] = -1;
         }
         int left = 0, right = 0;
         while(right < s.length()){
+
             if(arrays[s.charAt(right)]> -1){
                 int pos = arrays[s.charAt(right)];
                 if (pos >= left){
@@ -57,6 +58,7 @@ public class lengthOfLongestSubstring {
             }
             arrays[s.charAt(right)] = right;
             right++;
+
             if(len < right - left){
                 len = right - left;
             }
