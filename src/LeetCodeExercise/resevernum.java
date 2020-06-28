@@ -3,7 +3,7 @@ package LeetCodeExercise;
 public class resevernum {
     public static void main(String[] args){
         resevernum rs = new resevernum();
-        System.out.println(rs.reserve(123));
+        System.out.println(rs.reserve(121));
     }
 
     public int reserve(int x){
