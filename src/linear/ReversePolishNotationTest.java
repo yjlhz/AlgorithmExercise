@@ -18,7 +18,7 @@ public class ReversePolishNotationTest {
                 case "+":
                     o1 = oprands.pop();
                     o2 = oprands.pop();
-                    result = o1+o2;
+                    result = o2+o1;
                     oprands.push(result);
                     break;
                 case "-":
@@ -30,7 +30,7 @@ public class ReversePolishNotationTest {
                 case "*":
                     o1 = oprands.pop();
                     o2 = oprands.pop();
-                    result = o1*o2;
+                    result = o2*o1;
                     oprands.push(result);
                     break;
                 case "/":
