@@ -1,5 +1,8 @@
 package tree;
 
+
+import linear.Queue;
+
 public class BinaryTree <Key extends Comparable<Key>,Value>{
     //记录根结点
     private Node root;
@@ -150,6 +153,94 @@ public class BinaryTree <Key extends Comparable<Key>,Value>{
         }else {
             return x;
         }
+    }
+
+    //获取整个树中的健
+    public Queue<Key> preErgodic(){
+        Queue<Key> keys = new Queue<>();
+        preErgodic(root,keys);
+        return keys;
+    }
+
+    //获取指定树x的所有健，并放进keys中
+    private void preErgodic(Node x,Queue<Key> keys){
+        //判空
+        if (x==null){
+            return;
+        }
+        //把x结点的key放入keys中
+        keys.enqueue(x.key);
+        //递归遍历x结点的左子树
+        if (x.left!=null){
+            preErgodic(x.left,keys);
+        }
+        //递归遍历x结点的右子树
+        if (x.right!=null){
+            preErgodic(x.right,keys);
+        }
+    }
+
+    //中序遍历
+    public Queue<Key> midErgodic(){
+        Queue<Key> keys = new Queue<>();
+        midErgodic(root,keys);
+        return keys;
+    }
+
+    private void midErgodic(Node x,Queue<Key> keys){
+        if (x==null){
+            return;
+        }
+        if (x.left!=null){
+            midErgodic(x.left,keys);
+        }
+        keys.enqueue(x.key);
+        if (x.right!=null){
+            midErgodic(x.right,keys);
+        }
+    }
+
+    //后序遍历
+    public Queue<Key> afterErgodic(){
+        Queue<Key> keys = new Queue<>();
+        afterErgodic(root,keys);
+        return keys;
+    }
+
+    private void afterErgodic(Node x,Queue<Key> keys){
+        if (x==null){
+            return;
+        }
+        if (x.left!=null){
+            afterErgodic(x.left,keys);
+        }
+        if (x.right!=null){
+            afterErgodic(x.right,keys);
+        }
+        keys.enqueue(x.key);
+    }
+
+    //层序遍历
+    public Queue<Key> layerErgodic(){
+        //定义两个队列，分别存储树中的健和树中的结点
+        Queue<Key> keys = new Queue<Key>();
+        Queue<Node> nodes = new Queue<Node>();
+        //往队列中放入跟结点
+        nodes.enqueue(root);
+        while (!nodes.isEmpty()){
+            //从队列中弹出一个结点,把key放入keys中
+            Node n = nodes.dequeue();
+            keys.enqueue(n.key);
+            //判断当前结点有无左子结点，有则放入nodes中
+            if (n.left!=null){
+                nodes.enqueue(n.left);
+            }
+            //判断当前结点有无右子结点，有则放入nodes中
+            if (n.right!=null){
+                nodes.enqueue(n.right);
+            }
+        }
+        return keys;
     }
 
 
