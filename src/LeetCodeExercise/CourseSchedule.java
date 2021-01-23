@@ -43,7 +43,7 @@ public class CourseSchedule {
 
     public static void main(String[] args) {
         int numCourses = 2;
-        int[][] prerequisites = {{1,0},{0,1}};
+        int[][] prerequisites = {{0,1}};
         CourseSchedule c = new CourseSchedule();
         c.canFinish(numCourses,prerequisites);
     }
