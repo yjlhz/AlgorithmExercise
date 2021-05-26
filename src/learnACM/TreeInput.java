@@ -78,7 +78,6 @@ public class TreeInput {
         TreeNode head = tree[root];
         boolean flag = isBinarySearchTree(head);
         System.out.println(flag);
-
     }
 
     private static boolean isBinarySearchTree(TreeNode node) {
